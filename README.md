@@ -14,7 +14,7 @@ npm link
 ### Version Node.js:
 Greater than or equal to 18.0.0
 ### Brain-games simple console game consist from the 5 mini games:
-### Brain-even. 
+### Brain-even.
 ### In this game you need answer number even or not. Please use *yes* or *no* to answer. Look at the Example:
 <a href="https://asciinema.org/a/fBJJFXYnNKBD0HetqWbQpJwm6" target="_blank"><img src="https://asciinema.org/a/fBJJFXYnNKBD0HetqWbQpJwm6.svg"></a>
 ### Brain-calc.
