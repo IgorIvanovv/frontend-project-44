@@ -1,11 +1,11 @@
 import evenGame from '../index.js';
-import { getRandomNumber } from '../tools.js';
+import getRandomNumber from '../helpers.js';
 
 const description = 'Answer "yes" if the number is even, otherwise answer "no"';
 
 const parityCheck = (value) => value % 2 === 0;
 
-const getQuestionAndAnswer = () => {
+const getRound = () => {
   const question = getRandomNumber(1, 15);
   const correctAnswer = parityCheck(question) ? 'yes' : 'no';
 
@@ -13,5 +13,5 @@ const getQuestionAndAnswer = () => {
 };
 
 export default () => {
-  evenGame(description, getQuestionAndAnswer);
+  evenGame(description, getRound);
 };
