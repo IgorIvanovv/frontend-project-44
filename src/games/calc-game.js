@@ -2,33 +2,27 @@ import calcGame from '../index.js';
 import getRandomNumber from '../helpers.js';
 
 const description = 'What is the result of the expression?';
-
-const startArithmometer = (a, b, operation) => {
-  let correctAnswer = 0;
+const operations = ['+', '-', '*'];
+const countExpression = (a, b, operation) => {
   switch (operation) {
     case '+':
-      correctAnswer = a + b;
-      break;
+      return a + b;
     case '-':
-      correctAnswer = a - b;
-      break;
+      return a - b;
     case '*':
-      correctAnswer = a * b;
-      break;
+      return a * b;
     default:
-      return `Error: ${operation}`;
+      return `Error: This opperation '${operation}' is not supported!`;
   }
-  return String(correctAnswer);
 };
 
 const getRound = () => {
-  const arithmeticOperations = ['+', '-', '*'];
-  const getFirstNumber = getRandomNumber(1, 25);
-  const getSecondNumber = getRandomNumber(1, 25);
-  const getOperation = arithmeticOperations[getRandomNumber(0, arithmeticOperations.length - 1)];
-  const question = `${getFirstNumber} ${getOperation} ${getSecondNumber}`;
-  const correctAnswer = startArithmometer(getFirstNumber, getSecondNumber, getOperation);
-  return [question, correctAnswer];
+  const number1 = getRandomNumber(1, 25);
+  const number2 = getRandomNumber(1, 25);
+  const operation = operations[getRandomNumber(0, operations.length - 1)];
+  const question = `${number1} ${operation} ${number2}`;
+  const correctAnswer = countExpression(number1, number2, operation);
+  return [String(question), String(correctAnswer)];
 };
 
 export default () => {

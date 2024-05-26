@@ -19,8 +19,9 @@ const getQuestionAndAnswer = () => {
   const stepProg = getRandomNumber(1, 15);
   const lengthProg = getRandomNumber(6, 11);
   const [question, correctAnswer] = getProgression(stepProg, lengthProg);
-  return [question, String(correctAnswer)];
+  return [String(question), String(correctAnswer)];
 };
+
 export default () => {
   progressionGame(description, getQuestionAndAnswer);
 };

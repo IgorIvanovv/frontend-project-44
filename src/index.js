@@ -5,19 +5,18 @@ export default (description, getRound) => {
   const name = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${name}!`);
   console.log(description);
-  let roundCounter = 3;
-  while (roundCounter) {
+  let roundsCount = 3;
+  while (roundsCount) {
     const [question, correctAnswer] = getRound();
     console.log(`Question: ${question}`);
     const answer = readlineSync.question('Your answer: ');
-    if (answer === correctAnswer) {
-      console.log('Correct!');
-      roundCounter -= 1;
-    }
     if (answer !== correctAnswer) {
-      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\nLet's try again, ${name}!`);
+      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
+      console.log(`Let's try again, ${name}!`);
       return;
     }
+    console.log('Correct!');
+    roundsCount -= 1;
   }
   console.log(`Congratulations, ${name}!`);
 };
