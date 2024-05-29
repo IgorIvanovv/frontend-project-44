@@ -1,8 +1,9 @@
-import calcGame from '../index.js';
+import startGame from '../index.js';
 import getRandomNumber from '../helpers.js';
 
 const description = 'What is the result of the expression?';
 const operations = ['+', '-', '*'];
+
 const countExpression = (a, b, operation) => {
   switch (operation) {
     case '+':
@@ -22,9 +23,9 @@ const getRound = () => {
   const operation = operations[getRandomNumber(0, operations.length - 1)];
   const question = `${number1} ${operation} ${number2}`;
   const correctAnswer = countExpression(number1, number2, operation);
-  return [String(question), String(correctAnswer)];
+  return [question, String(correctAnswer)];
 };
 
 export default () => {
-  calcGame(description, getRound);
+  startGame(description, getRound);
 };

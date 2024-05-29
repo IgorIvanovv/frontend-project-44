@@ -1,27 +1,33 @@
-import progressionGame from '../index.js';
+import startGame from '../index.js';
 import getRandomNumber from '../helpers.js';
 
 const description = 'What number is missing in the progression?';
 
-const getProgression = (step, length) => {
-  const result = [];
-  for (let i = step; i < step * length; i += step) {
-    result.push(i);
+const getProgression = (start, length, step) => {
+  let num = start;
+  const result = [num];
+
+  for (let i = 0; i < length; i += 1) {
+    num += step;
+    result.push(num);
   }
-  const hiddenSymbol = getRandomNumber(0, result.length - 1);
-  const correctAnswer = result[hiddenSymbol];
-  result[hiddenSymbol] = '..';
-  const question = result.join(' ');
-  return [question, correctAnswer];
+
+  return result;
 };
 
-const getQuestionAndAnswer = () => {
-  const stepProg = getRandomNumber(1, 15);
-  const lengthProg = getRandomNumber(6, 11);
-  const [question, correctAnswer] = getProgression(stepProg, lengthProg);
-  return [String(question), String(correctAnswer)];
+const getRound = () => {
+  const step = getRandomNumber(1, 10);
+  const length = getRandomNumber(6, 12);
+  const start = getRandomNumber(0, 10);
+  const progression = getProgression(start, step, length);
+  const hiddenSymbol = getRandomNumber(0, progression.length - 1);
+  const correctAnswer = progression[hiddenSymbol];
+  progression[hiddenSymbol] = '..';
+  const question = progression.join(' ');
+
+  return [question, String(correctAnswer)];
 };
 
 export default () => {
-  progressionGame(description, getQuestionAndAnswer);
+  startGame(description, getRound);
 };
