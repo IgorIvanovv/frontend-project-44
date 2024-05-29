@@ -7,7 +7,7 @@ const getProgression = (start, length, step) => {
   let num = start;
   const result = [num];
 
-  for (let i = 0; i < length; i += 1) {
+  for (let i = 1; i < length; i += 1) {
     num += step;
     result.push(num);
   }
@@ -19,7 +19,7 @@ const getRound = () => {
   const step = getRandomNumber(1, 10);
   const length = getRandomNumber(6, 12);
   const start = getRandomNumber(0, 10);
-  const progression = getProgression(start, step, length);
+  const progression = getProgression(start, length, step);
   const hiddenSymbol = getRandomNumber(0, progression.length - 1);
   const correctAnswer = progression[hiddenSymbol];
   progression[hiddenSymbol] = '..';
